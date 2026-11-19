@@ -33,6 +33,45 @@ else{
     <title>Lista de funcionarios</title>
 </head>
 <body>
-    
+    <h1>Gerenciamento de funcionarios</h1>
+    <a href = "cadastrar.php">Cadastrar funcionarios</a>
+
+    <h2>Pesquisar pelo ID</h2>
+    <form action="listar.php" method="GET">
+        <input
+           type="number"
+           name="id"
+           placeholder="Digite o ID"
+           min="1"
+        >
+        <button type="submit">Perquisar</button>
+    </form>
+     <br>
+    <h2>lista de funcionarios</h2>
+    <table lorder="1" cellpadding="10">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Cargo</th>
+            <th>Funcao</th>
+            <th>Salario</th>
+        </tr>
+        <?php
+         if($funcionario["Cargo"]=="operador"){
+            $objeto=new FuncionarioComum(
+                $funcionario["nome"],
+                (string)$funcionario["Email"],
+                (float)$funcionario["salario"]
+            );           
+         } else {
+            $objeto = new Gerente(
+                $funcionario["nome"],
+                (string)$funcionario["Email"],
+                (float)$funcionario["salario"]
+            );
+         }
+        ?>
+    </table>
 </body>
 </html>
