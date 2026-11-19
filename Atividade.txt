@@ -113,3 +113,26 @@ A apresentação visual será considerada, mas o funcionamento do sistema terá 
 ENTREGA .ZIP CONTENDO:
 - Pasta completa do projeto.
 - Arquivo .sql de criação do banco de dados.
+
+sistema_funcionarios/
+│
+├── banco.sql
+├── index.php
+│
+├── config/
+│   ├── conexao.php
+│   └── funcoes.php
+│
+├── models/
+│   ├── Funcionario.php
+│   ├── Operador.php
+│   └── Supervisor.php
+│
+└── views/
+    ├── listar.php
+    ├── cadastrar.php
+    ├── editar.php
+    └── excluir.php
+index
+header("Location: views/listar.php");
+
