@@ -3,7 +3,8 @@ AVALIAÇÃO PRÁTICA 01 — Sistema de Gerenciamento de Funcionários
 
 
 OBJETIVO
-Desenvolver um sistema web de gerenciamento de funcionários utilizando Programação Orientada a Objetos (POO), arquitetura MVC (Model, View e Controller), formulários HTML, métodos HTTP GET e POST, sessões PHP e banco de dados MySQL.
+Desenvolver um sistema web de gerenciamento de funcionários utilizando Programação Orientada a Objetos (POO), arquitetura MVC (Model, View e Controller),
+ formulários HTML, métodos HTTP GET e POST, sessões PHP e banco de dados MySQL.
 
 
 REGRAS DA AVALIAÇÃO
