@@ -1,0 +1,17 @@
+CREATE DATABASE industria;
+
+USE industria;
+
+CREATE TABLE funcionarios (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    nome VARCHAR(100) NOT NULL,
+
+    idade INT NOT NULL,
+
+    salario DECIMAL(10,2) NOT NULL,
+
+    cargo VARCHAR(20) NOT NULL
+
+);
