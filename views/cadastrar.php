@@ -75,7 +75,22 @@ $mensagem = "";
     <form action = "cadastrar.php" method="POST">
         <label>Nome:</label>
         <input type = "text" name="nome" required>
-        
+
+         <label>Email:</label>
+        <input type = "text" name="email" required>
+
+         <label>Salario:</label>
+        <input type = "number" name="salario" min=100 required>
+
+        <label>Cargo:</label>
+        <select name="cargo" required>
+            <option value=" ">Selecione</option>
+            <option value="funcionarioComum">Funcionario Comum</option>
+            <option value="gerente">Gerente</option>
+        </select>
+<br>
+        <button type="submit">Cadastrar</button>
+
     </form>
 </body>
 </html>
