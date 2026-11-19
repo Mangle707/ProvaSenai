@@ -86,7 +86,7 @@ A exclusão deve exigir confirmação por formulário POST antes de alterar o ba
 
 
 5. SESSÕES PHP
-Implemente uma funcionalidade utilizando $_SESSION..
+Implemente uma funcionalidade utilizando $_SESSION.
 O sistema deverá:
 - Registrar o nome do operador em uma sessão.
 - Exibir uma mensagem de boas-vindas com esse nome.
