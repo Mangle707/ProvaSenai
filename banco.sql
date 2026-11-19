@@ -1,6 +1,6 @@
-CREATE DATABASE industria;
+CREATE DATABASE empresa_db;
 
-USE industria;
+USE empresa_db;
 
 CREATE TABLE funcionarios (
 
