@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . "/conexao.php";
-require_once __DIR__ . "/funcoes.php";
+require_once __DIR__ . "../config/conexao.php";
+require_once __DIR__ . "../config/funcoes.php";
 
 $id = filter_var(
     $_GET["id"] ?? $_POST["id"] ?? null,

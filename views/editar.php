@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . "/conexao.php";
-require_once __DIR__ . "/funcoes.php";
-require_once __DIR__ . "/classes/Operador.php";
-require_once __DIR__ . "/classes/Supervisor.php";
+require_once __DIR__ . "../config/conexao.php";
+require_once __DIR__ . "../config/funcoes.php";
+require_once __DIR__ . "/models/FuncionarioC.php";
+require_once __DIR__ . "/models/Gerente.php";
 
 $id = filter_var(
     $_GET["id"] ?? null,
@@ -12,7 +12,7 @@ $id = filter_var(
 
 if ($id === false || $id === null || $id <= 0) {
 
-    die("ID inválido!");
+    die("ID invalido!");
 
 }
 
@@ -28,7 +28,7 @@ $dados = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$dados) {
 
-    die("Funcionário não encontrado!");
+    die("Funcionario nao encontrado!");
 
 }
 
@@ -53,11 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cargo = $_POST["cargo"] ?? "";
 
         if ($idade === false || $idade === null) {
-            throw new InvalidArgumentException("Idade inválida!");
+            throw new InvalidArgumentException("Idade invalida!");
         }
 
         if ($salario === false || $salario === null) {
-            throw new InvalidArgumentException("Salário inválido!");
+            throw new InvalidArgumentException("Salario invalido!");
         }
 
         if ($cargo == "operador") {

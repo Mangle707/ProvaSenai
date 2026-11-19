@@ -8,7 +8,7 @@ CREATE TABLE funcionarios (
 
     nome VARCHAR(100) NOT NULL,
 
-    idade INT NOT NULL,
+    email VARCHAR(100) NOT NULL,
 
     salario DECIMAL(10,2) NOT NULL,
 
