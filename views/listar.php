@@ -57,6 +57,7 @@ else{
             <th>Funcao</th>
             <th>Salario</th>
         </tr>
+        <?php foreach($funcionarios as $funcionario):?>
         <?php
          if($funcionario["Cargo"]=="operador"){
             $objeto=new FuncionarioComum(
@@ -72,6 +73,18 @@ else{
             );
          }
         ?>
+        <tr>
+            <td><?= h($funcionario["id"])  ?></td>
+            <td><?= h($objeto->getNome())  ?></td>
+            <td><?= h($objeto->getEmail())  ?></td>
+            <td><?= h($objeto->getCargo())  ?></td>
+            <td><?= h($objeto->executarFuncao())  ?></td>
+            <td><?= number_format($objeto->getSalario())  ?></td>
+        </tr>
+        <?php endforeach; ?>
     </table>
+    <?php if(count($funcionario) == 0): ?>
+        <p>Nenhum funcionario encontrado</p>
+        <?php endif;?>
 </body>
 </html>
