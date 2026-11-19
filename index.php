@@ -1,4 +1,4 @@
 <?php
-    header("Location:listar.php");
+   header("Location: views/listar.php");
        exit;
   ?>

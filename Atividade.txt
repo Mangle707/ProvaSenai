@@ -115,6 +115,4 @@ ENTREGA .ZIP CONTENDO:
 - Arquivo .sql de criação do banco de dados.
 
 
-index
-header("Location: views/listar.php");
 

@@ -12,6 +12,6 @@ CREATE TABLE funcionarios (
 
     salario DECIMAL(10,2) NOT NULL,
 
-    cargo VARCHAR(20) NOT NULL
+    cargo VARCHAR(100) NOT NULL
 
 );
