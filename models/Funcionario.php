@@ -40,6 +40,19 @@
                }
                $this->email = trim($email);
     }
+    //para salario
+    public function getSalario():float
+    {
+        return $this->salario;
+    }
+    public function setSalario(float $salario):void{
+          if($salario < 0){
+                throw new invalidArgumentExeption("Salario invalido");
+          }
+          $this->salario = $salario;
+    }
+    abstract public function executarFuncao():string;
     
+    abstract public function getCargo():string;
  }
 ?>
