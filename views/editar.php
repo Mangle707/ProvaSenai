@@ -39,11 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
 
         $nome = trim($_POST["nome"] ?? "");
+         $email = trim($_POST["email"] ?? "");
 
-        $idade = filter_var(
-            $_POST["idade"] ?? null,
-            FILTER_VALIDATE_INT
-        );
 
         $salario = filter_var(
             $_POST["salario"] ?? null,
@@ -52,33 +49,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $cargo = $_POST["cargo"] ?? "";
 
-        if ($idade === false || $idade === null) {
-            throw new InvalidArgumentException("Idade invalida!");
+        if ($email === false || $email === null) {
+            throw new InvalidArgumentException("Email invalido!");
         }
 
         if ($salario === false || $salario === null) {
             throw new InvalidArgumentException("Salario invalido!");
         }
 
-        if ($cargo == "operador") {
+        if ($cargo == "funcionarioComum") {
 
-            $funcionario = new Operador(
+            $funcionario = new FuncionarioComum(
                 $nome,
-                $idade,
+                $email,
                 $salario
             );
 
-        } elseif ($cargo == "supervisor") {
+        } elseif ($cargo == "gerente") {
 
-            $funcionario = new Supervisor(
+            $funcionario = new Gerente(
                 $nome,
-                $idade,
+                $email,
                 $salario
             );
 
         } else {
 
-            throw new InvalidArgumentException("Cargo inválido!");
+            throw new InvalidArgumentException("Cargo invalido!");
 
         }
 
@@ -86,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 nome = :nome,
 
-                idade = :idade,
+                email = :email,
 
                 salario = :salario,
 
@@ -100,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             ":nome" => $funcionario->getNome(),
 
-            ":idade" => $funcionario->getIdade(),
+            ":email" => $funcionario->getEmail(),
 
             ":salario" => $funcionario->getSalario(),
 
@@ -154,13 +151,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <br><br>
 
-        <label>Idade:</label>
+        <label>Email:</label>
 
         <input
-            type="number"
-            name="idade"
-            value="<?= h($dados["idade"]) ?>"
-            min="1"
+            type="text"
+            name="email"
+            value="<?= h($dados["email"]) ?>"
             required
         >
 
@@ -172,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             type="number"
             name="salario"
             value="<?= h($dados["salario"]) ?>"
-            step="0.01"
+
             min="0"
             required
         >
@@ -184,17 +180,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <select name="cargo" required>
 
             <option
-                value="operador"
-                <?= $dados["cargo"] == "operador" ? "selected" : "" ?>
+                value="funcionarioComum"
+                <?= $dados["cargo"] == "funcionarioComum" ? "selected" : "" ?>
             >
-                Operador
+                Funcionario Comum
             </option>
 
             <option
-                value="supervisor"
-                <?= $dados["cargo"] == "supervisor" ? "selected" : "" ?>
+                value="gerente"
+                <?= $dados["cargo"] == "gerente" ? "selected" : "" ?>
             >
-                Supervisor
+                Gerente
             </option>
 
         </select>
