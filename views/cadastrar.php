@@ -14,9 +14,68 @@ $mensagem = "";
             FILTER_VALIDATE_INT
         );
         $salario = filter_var(
-            $_POST["salario"] ?? null
-        )
-    }
+            $_POST["salario"] ?? null,
+            FILTER_VALIDATE_FLOAT
+        );
+        $cargo = $_POST["cargo"] ?? "";
+
+        if($salario === false || $salario === null){
+            throw new InvalidArgumentException("Salario invalido");
+        }
+
+        if($cargo == "gerente"){
+            $funcionario = new Gerente(
+                $nome,
+                $email,
+                $salario
+            );
+        }
+        if($cargo == "funcionarioComum"){
+            $funcionario = new FuncionarioComum(
+                $nome,
+                $email,
+                $salario
+            );
+        }else{
+            throw new InvalidArgumentException("cargo invalido");
+        }
+        $sql = "INSERT INTO funcionarios
+               (nome,idade,salario,cargo)
+               VALUES
+               (:nome,:idade,:salario,:cargo)";
+
+       $stmt = $pdo ->prepare($sql);
+
+       $stmt ->execute([
+        ":nome"=>$funcionario->getNome(),
+        ":email"=>$funcionario->getEmail(),
+        ":salario"=>$funcionario->getSalario(),
+        ":cargo"=>$funcionario->getCargo(),
+       ]);
+       header("Location:lista.php");
+       exit; }
+
+       catch(PDOException | InvalidArgumentException $e){
+        $mensagem = "Erro ao cadastrar:" . $e -> getMessage();
+       }
   }
 
 ?>
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Funcionarios</title>
+</head>
+<body>
+    <h1>Cadarstrar Funcionario</h1>
+    <p><?= h($mensagem) ?></p>
+
+    <form action = "cadastrar.php" method="POST">
+        <label>Nome:</label>
+        <input type = "text" name="nome" required>
+        
+    </form>
+</body>
+</html>
